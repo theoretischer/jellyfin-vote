@@ -29,10 +29,6 @@ A web app for voting on your Jellyfin media library. Users log in with their exi
 
 3. The app runs on `http://localhost:3000`
 
-### Reverse Proxy (Nginx)
-
-Example configuration in `nginx-example.conf`. Copy to `/etc/nginx/sites-available/` and adjust `server_name`.
-
 ### Without Docker (for development)
 
 ```bash
@@ -89,10 +85,6 @@ Webapp zum Abstimmen über Jellyfin-Bibliotheken. User loggen sich mit ihren Jel
    ```
 
 3. Die App läuft auf `http://localhost:3000`
-
-### Reverse Proxy (Nginx)
-
-Beispiel-Konfiguration in `nginx-example.conf`. Kopiere nach `/etc/nginx/sites-available/` und passe `server_name` an.
 
 ### Ohne Docker (zum Entwickeln)
 
