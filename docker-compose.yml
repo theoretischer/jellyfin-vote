@@ -9,8 +9,8 @@ services:
     volumes:
       - ./data:/app/data
     environment:
-      # URL deines Jellyfin-Servers anpassen!
+      # Set this to your Jellyfin server URL!
       - JELLYFIN_URL=http://YOUR_JELLYFIN_IP:8096
-      # Name der Webseite (frei waehlbar)
+      # Website name (customize freely)
       - SITE_NAME=Jellyfin Vote
       - PORT=3000
