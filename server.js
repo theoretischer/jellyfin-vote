@@ -12,7 +12,7 @@ const {
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const JELLYFIN_URL = process.env.JELLYFIN_URL || 'http://192.168.178.130:8096';
+const JELLYFIN_URL = process.env.JELLYFIN_URL || 'http://localhost:8096';
 const CLIENT_NAME = 'ChrisflixVote';
 const CLIENT_VERSION = '1.0.0';
 

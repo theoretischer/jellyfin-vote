@@ -1,13 +1,13 @@
 # Chrisflix Vote
 
-Webapp zum Abstimmen über Jellyfin-Bibliotheken. User loggen sich mit ihren Jellyfin-Accounts ein, sehen ihre freigegebenen Bibliotheken und stimmen pro Film/Serie ab: behalten (grün) oder löschen (rot).
+Webapp zum Abstimmen über Jellyfin-Bibliotheken. User loggen sich mit ihren Jellyfin-Accounts ein, sehen ihre freigegebenen Bibliotheken und stimmen pro Film/Serie ab: behalten (grün), letzte Staffel (orange) oder löschen (rot).
 
 ## Features
 
 - **Login mit Jellyfin-Account** - jeder User nutzt seine existierenden Zugangsdaten
 - **Bibliotheken** - User sehen nur die für ihr Profil freigegebenen Bibliotheken
 - **Voting-Gitter** - alle Filme/Serien einer Bibliothek als Gitter mit Cover, Name und Vote-Button
-- **Farb-Markierung** - grün = mindestens 1 Stimme (behalten), rot = 0 Stimmen (löschen)
+- **Farb-Markierung** - grün = mindestens 1 Stimme (behalten), orange = letzte Staffel, rot = 0 Stimmen (löschen)
 - **Löschliste** - alle roten Filme & Serien alphabetisch sortiert, getrennt nach Filmen und Serien
 - **Admin-Funktion** - Admins können Einträge aus der Löschliste ausblenden (z.B. wenn bereits gelöscht)
 - **Image-Proxy** - Bilder werden durch das Backend geleitet, kein direkter Jellyfin-Zugriff nötig
@@ -16,9 +16,10 @@ Webapp zum Abstimmen über Jellyfin-Bibliotheken. User loggen sich mit ihren Jel
 
 ### Mit Docker (empfohlen)
 
-1. Docker-Netzwerk erstellen (falls noch nicht vorhanden):
-   ```bash
-   docker network create proxy-network
+1. `docker-compose.yml` öffnen und `JELLYFIN_URL` auf die URL deines Jellyfin-Servers anpassen:
+   ```yaml
+   environment:
+     - JELLYFIN_URL=http://DEINE_JELLYFIN_IP:8096
    ```
 
 2. Build & Start:
@@ -43,7 +44,7 @@ npm start
 
 | Environment Variable | Standard | Beschreibung |
 |---------------------|----------|-------------|
-| `JELLYFIN_URL` | `http://192.168.178.130:8096` | URL des Jellyfin-Servers |
+| `JELLYFIN_URL` | `http://localhost:8096` | URL des Jellyfin-Servers (in `docker-compose.yml` anpassen) |
 | `PORT` | `3000` | Port der Webapp |
 | `DATA_DIR` | `./data` | Verzeichnis für Vote-Daten |
 
