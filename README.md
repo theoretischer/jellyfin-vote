@@ -1,4 +1,4 @@
-# Chrisflix Vote
+# Jellyfin Vote
 
 A web app for voting on your Jellyfin media library. Users log in with their existing Jellyfin accounts, browse their accessible libraries, and vote on each movie or series: keep (green), last season (orange), or delete (red). An alphabetically sorted delete list shows all items with zero votes, separated by movies and series.
 
@@ -41,6 +41,7 @@ npm start
 | Environment Variable | Default | Description |
 |---------------------|----------|-------------|
 | `JELLYFIN_URL` | `http://localhost:8096` | URL of your Jellyfin server (set in `docker-compose.yml`) |
+| `SITE_NAME` | `Jellyfin Vote` | Name shown on the website (customize freely) |
 | `PORT` | `3000` | Port the web app runs on |
 | `DATA_DIR` | `./data` | Directory for vote data storage |
 
@@ -55,7 +56,7 @@ npm start
 
 ---
 
-# Chrisflix Vote (Deutsch)
+# Jellyfin Vote (Deutsch)
 
 Webapp zum Abstimmen über Jellyfin-Bibliotheken. User loggen sich mit ihren Jellyfin-Accounts ein, sehen ihre freigegebenen Bibliotheken und stimmen pro Film/Serie ab: behalten (grün), letzte Staffel (orange) oder löschen (rot). Eine alphabetisch sortierte Löschliste zeigt alle Items mit 0 Stimmen, getrennt nach Filmen und Serien.
 
@@ -98,6 +99,7 @@ npm start
 | Environment Variable | Standard | Beschreibung |
 |---------------------|----------|-------------|
 | `JELLYFIN_URL` | `http://localhost:8096` | URL des Jellyfin-Servers (in `docker-compose.yml` anpassen) |
+| `SITE_NAME` | `Jellyfin Vote` | Name der Webseite (frei wählbar) |
 | `PORT` | `3000` | Port der Webapp |
 | `DATA_DIR` | `./data` | Verzeichnis für Vote-Daten |
 

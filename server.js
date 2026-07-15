@@ -13,7 +13,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const JELLYFIN_URL = process.env.JELLYFIN_URL || 'http://localhost:8096';
-const CLIENT_NAME = 'ChrisflixVote';
+const SITE_NAME = process.env.SITE_NAME || 'Jellyfin Vote';
+const CLIENT_NAME = 'JellyfinVote';
 const CLIENT_VERSION = '1.0.0';
 
 app.use(express.json());
@@ -22,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // --- Helpers ---
 
 function authHeader(token) {
-  let header = `MediaBrowser Client="${CLIENT_NAME}", Device="Web", DeviceId="chrisflix-vote-web", Version="${CLIENT_VERSION}"`;
+  let header = `MediaBrowser Client="${CLIENT_NAME}", Device="Web", DeviceId="jellyfin-vote-web", Version="${CLIENT_VERSION}"`;
   if (token) {
     header += `, Token="${token}"`;
   }
@@ -65,6 +66,11 @@ function requireAuth(req, res, next) {
 }
 
 // --- API Routes ---
+
+// Config (public - no auth needed for site name)
+app.get('/api/config', (req, res) => {
+  res.json({ siteName: SITE_NAME });
+});
 
 // Login
 app.post('/api/login', async (req, res) => {
@@ -381,7 +387,7 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`ChrisflixVote running on port ${PORT}`);
+  console.log(`JellyfinVote running on port ${PORT}`);
   console.log(`Jellyfin server: ${JELLYFIN_URL}`);
   if (!fs.existsSync(DATA_DIR)) {
     fs.mkdirSync(DATA_DIR, { recursive: true });

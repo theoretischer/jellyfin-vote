@@ -1,5 +1,5 @@
 {
-  "name": "chrisflix-vote",
+  "name": "jellyfin-vote",
   "version": "1.0.0",
   "description": "Voting app for Jellyfin libraries - vote to keep or delete media",
   "main": "server.js",

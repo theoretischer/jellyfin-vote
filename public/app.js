@@ -6,7 +6,19 @@ let state = {
   isAdmin: localStorage.getItem('jf_isAdmin') === 'true',
   view: 'libraries',
   currentLibrary: null,
+  siteName: 'Jellyfin Vote',
 };
+
+// Load site name from backend on startup
+(async () => {
+  try {
+    const resp = await fetch('/api/config');
+    const data = await resp.json();
+    state.siteName = data.siteName || 'Jellyfin Vote';
+    document.title = state.siteName;
+    if (state.token) render();
+  } catch (e) { /* ignore, use default */ }
+})();
 
 // --- API Helper ---
 async function api(path, method = 'GET', body = null) {
@@ -72,7 +84,7 @@ function renderLogin(app) {
   app.innerHTML = `
     <div class="login-container">
       <div class="login-box">
-        <h2>Chrisflix <span>Vote</span></h2>
+        <h2>${state.siteName}</h2>
         <div id="login-error" class="error-msg" style="display:none;"></div>
         <form id="login-form">
           <div class="form-group">
@@ -123,7 +135,7 @@ function renderHeader(app, activeView) {
   const header = document.createElement('div');
   header.className = 'header';
   header.innerHTML = `
-    <h1 onclick="goToLibraries()">Chrisflix <span>Vote</span></h1>
+    <h1 onclick="goToLibraries()">${state.siteName}</h1>
     <div class="header-right">
       <button class="nav-btn ${activeView === 'libraries' || activeView === 'library-items' ? 'active' : ''}" onclick="goToLibraries()">Bibliotheken</button>
       <button class="nav-btn ${activeView === 'delete-list' ? 'active' : ''}" onclick="goToDeleteList()">Löschliste</button>

@@ -1,7 +1,7 @@
 services:
-  chrisflix-vote:
+  jellyfin-vote:
     build: .
-    container_name: chrisflix-vote
+    container_name: jellyfin-vote
     restart: unless-stopped
     network_mode: host
     volumes:
@@ -9,4 +9,6 @@ services:
     environment:
       # URL deines Jellyfin-Servers anpassen!
       - JELLYFIN_URL=http://YOUR_JELLYFIN_IP:8096
+      # Name der Webseite (frei waehlbar)
+      - SITE_NAME=Jellyfin Vote
       - PORT=3000
