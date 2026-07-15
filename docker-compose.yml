@@ -1,6 +1,8 @@
 services:
   jellyfin-vote:
-    build: .
+    build:
+      context: .
+      network: host
     container_name: jellyfin-vote
     restart: unless-stopped
     network_mode: host
