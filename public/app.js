@@ -1,4 +1,5 @@
 // --- State ---
+const DEFAULT_SITE_NAME = 'Jellyfin Vote';
 let state = {
   token: localStorage.getItem('jf_token') || null,
   userId: localStorage.getItem('jf_userid') || null,
@@ -6,18 +7,18 @@ let state = {
   isAdmin: localStorage.getItem('jf_isAdmin') === 'true',
   view: 'libraries',
   currentLibrary: null,
-  siteName: 'Jellyfin Vote',
+  siteName: DEFAULT_SITE_NAME,
 };
 
-// Load site name from backend on startup
+// Load site name from backend, then render
 (async () => {
   try {
     const resp = await fetch('/api/config');
     const data = await resp.json();
-    state.siteName = data.siteName || 'Jellyfin Vote';
-    document.title = state.siteName;
-    if (state.token) render();
+    state.siteName = data.siteName || DEFAULT_SITE_NAME;
   } catch (e) { /* ignore, use default */ }
+  document.title = state.siteName;
+  render();
 })();
 
 // --- API Helper ---
@@ -49,7 +50,7 @@ function logout() {
   localStorage.removeItem('jf_userid');
   localStorage.removeItem('jf_username');
   localStorage.removeItem('jf_isAdmin');
-  state = { token: null, userId: null, username: null, isAdmin: false, view: 'libraries', currentLibrary: null };
+  state = { token: null, userId: null, username: null, isAdmin: false, view: 'libraries', currentLibrary: null, siteName: state.siteName };
   render();
 }
 
