@@ -1,0 +1,11 @@
+services:
+  chrisflix-vote:
+    build: .
+    container_name: chrisflix-vote
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./data:/app/data
+    environment:
+      - JELLYFIN_URL=http://192.168.178.130:8096
+      - PORT=3000
